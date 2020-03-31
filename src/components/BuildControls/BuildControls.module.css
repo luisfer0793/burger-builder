@@ -1,0 +1,6 @@
+.BuildControls {
+    display: flex;
+    justify-content: space-evenly;
+    border: .1rem solid #C3E6CB;
+    background-color: #D4EDDA;
+}

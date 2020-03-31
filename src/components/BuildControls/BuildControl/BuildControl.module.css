@@ -1,0 +1,32 @@
+.BuildControl {
+    display: flex;
+    align-items: center;
+}
+
+.BuildControlButton {
+    padding: .5rem 1.5rem;
+    font-family: inherit;
+    font-size: 2rem;
+    border: .1rem solid #17A2B8;
+    cursor: pointer;
+    color: white;
+    background-color:#17A2B8;
+    transition: all linear 250ms;
+}
+
+.BuildControlButton:hover {
+    color: #17A2B8;
+    background-color: #F9F9FA;
+}
+
+.BuildControlButton:disabled {
+    border-color: rgba(23, 163, 184, 0.253);
+    background-color: rgba(23, 163, 184, 0.253);
+    cursor: not-allowed;
+}
+
+.BuildControlLabel {
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
