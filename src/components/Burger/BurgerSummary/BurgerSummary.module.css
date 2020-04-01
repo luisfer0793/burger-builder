@@ -1,0 +1,43 @@
+.BurgerSummary {
+    padding: 0 3rem;
+}
+
+.BurgerSummaryTitle {
+    padding: 1.5rem 0 3rem;
+    font-size: 3.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.BurgerSummaryText {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.BurgerSummaryList {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    list-style: none;
+}
+
+.BurgerSummaryListItem {
+    display: flex;
+    padding: 1rem;
+    font-size: 1.4rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.BurgerSummaryListItem:nth-child(odd) {
+    background-color: rgb(220, 240, 245);
+}
+
+.BurgerSummaryListItem:last-child {
+    font-weight: 600;
+    background-color: rgb(245, 220, 220);
+}
+
+.BurgerSummaryListItemType {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}

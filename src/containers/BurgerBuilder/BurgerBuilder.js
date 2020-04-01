@@ -6,11 +6,12 @@ import Modal from '../../components/UI/Modal/Modal';
 import ButtonPrimary from './../../components/UI/ButtonPrimary/ButtonPrimary';
 
 import styles from './BurgerBuilder.module.css';
+import BurgerSummary from '../../components/Burger/BurgerSummary/BurgerSummary';
 
 class BurgerBuilder extends React.Component {
     state = {
         ingredients: [
-            { type: 'salad', quantity: 0, price: .8 },
+            { type: 'salad', quantity: 0, price: .4 },
             { type: 'meat', quantity: 0, price: 1.4 },
             { type: 'cheese', quantity: 0, price: 1 },
             { type: 'bacon', quantity: 0, price: .7 },
@@ -55,7 +56,7 @@ class BurgerBuilder extends React.Component {
         return (
             <React.Fragment>
                 <Modal>
-                    <p>Aquí va la información del modal.</p>
+                    <BurgerSummary ingredients={this.state.ingredients} total={this.state.total}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients} price={this.state.total.toFixed(2)}/>
                 <BuildControls
