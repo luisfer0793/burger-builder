@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TransitionsModal() {
+export default function BurgerModal() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -32,7 +32,7 @@ export default function TransitionsModal() {
 
     return (
         <div>
-            <button type="button" onClick={handleOpen}>Open Modal</button>
+            <button type="button" onClick={handleOpen}>Order Now</button>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"

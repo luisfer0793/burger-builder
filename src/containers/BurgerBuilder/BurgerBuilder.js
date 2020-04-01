@@ -1,7 +1,8 @@
 import React from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/BuildControls/BuildControls';
-import TransitionsModal from '../../components/UI/Modal/TransitionsModal';
+import BurgerModal from '../../components/UI/BurgerModal/BurgerModal';
+import Modal from '../../components/UI/Modal/Modal';
 
 import Button from '@material-ui/core/Button';
 
@@ -47,13 +48,15 @@ class BurgerBuilder extends React.Component {
         
         return (
             <React.Fragment>
-                <Button variant="contained" color="primary">HOLA PERROS</Button>
-                <TransitionsModal/>
+                <Modal>
+                    <p>Aquí va la información del modal.</p>
+                </Modal>
                 <Burger ingredients={this.state.ingredients} price={this.state.total.toFixed(2)}/>
                 <BuildControls
                     disabledTypes={disabledTypes} 
                     addIngredientHandler={this.addIngredientHandler} 
                     removeIngredientHandler={this.removeIngredientHandler}/>
+                <Button variant="contained" color="primary" size="large">Order Now</Button>
             </React.Fragment>
         );
     }
