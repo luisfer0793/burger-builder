@@ -1,10 +1,11 @@
 import React from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/BuildControls/BuildControls';
-import BurgerModal from '../../components/UI/BurgerModal/BurgerModal';
-import Modal from '../../components/UI/Modal/Modal';
 
-import Button from '@material-ui/core/Button';
+import Modal from '../../components/UI/Modal/Modal';
+import ButtonPrimary from './../../components/UI/ButtonPrimary/ButtonPrimary';
+
+import styles from './BurgerBuilder.module.css';
 
 class BurgerBuilder extends React.Component {
     state = {
@@ -15,7 +16,8 @@ class BurgerBuilder extends React.Component {
             { type: 'bacon', quantity: 0, price: .7 },
         ],
         basePrice: 4,
-        total: 4
+        total: 4,
+        isPurchasable: false
     };
 
     addIngredientHandler = type => {
@@ -23,9 +25,11 @@ class BurgerBuilder extends React.Component {
         const typeIndex = newIngredients.findIndex(ingredient => ingredient.type === type);
         newIngredients[typeIndex].quantity = this.state.ingredients[typeIndex].quantity + 1;
         const ingredientsTotal = newIngredients.reduce((accumulator, ingredient) => accumulator + ingredient.quantity * ingredient.price, 0);
+        const isPurchasable = newIngredients.some(ingredient => ingredient.quantity !== 0);
         this.setState((prevState) => ({
             ingredients: newIngredients,
-            total: prevState.basePrice + ingredientsTotal
+            total: prevState.basePrice + ingredientsTotal,
+            isPurchasable
         }));
     };
 
@@ -34,9 +38,11 @@ class BurgerBuilder extends React.Component {
         const typeIndex = newIngredients.findIndex(ingredient => ingredient.type === type);
         newIngredients[typeIndex].quantity = this.state.ingredients[typeIndex].quantity - 1;
         const ingredientsTotal = newIngredients.reduce((accumulator, ingredient) => accumulator + ingredient.quantity * ingredient.price, 0);
+        const isPurchasable = newIngredients.some(ingredient => ingredient.quantity !== 0);
         this.setState((prevState) => ({
             ingredients: newIngredients,
-            total: prevState.basePrice + ingredientsTotal
+            total: prevState.basePrice + ingredientsTotal,
+            isPurchasable
         }));
     };
 
@@ -55,8 +61,11 @@ class BurgerBuilder extends React.Component {
                 <BuildControls
                     disabledTypes={disabledTypes} 
                     addIngredientHandler={this.addIngredientHandler} 
-                    removeIngredientHandler={this.removeIngredientHandler}/>
-                <Button variant="contained" color="primary" size="large">Order Now</Button>
+                    removeIngredientHandler={this.removeIngredientHandler}
+                />
+                <div className={styles.BurgerBuilderButtonContainer}>
+                    <ButtonPrimary variant="contained" size="large" disabled={!this.state.isPurchasable}>Ordena Ahora</ButtonPrimary>
+                </div>
             </React.Fragment>
         );
     }
