@@ -41,3 +41,9 @@
     font-size: 1.4rem;
     text-transform: uppercase;
 }
+
+.BurgerSummaryButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 
 import styles from './BurgerSummary.module.css';
+import ButtonPrimary from '../../UI/ButtonPrimary/ButtonPrimary';
 
-const BurgerSummary = ({ingredients, total}) => {
+const BurgerSummary = ({ingredients, total, orderHandler, modalHandler}) => {
     return (
         <div className={styles.BurgerSummary}>
             <h2 className={styles.BurgerSummaryTitle}>Tu Pedido</h2>
@@ -19,6 +20,10 @@ const BurgerSummary = ({ingredients, total}) => {
                     <span>{total.toFixed(2)} $</span>
                 </li>
             </ul>
+            <div className={styles.BurgerSummaryButtons}>
+                <ButtonPrimary variant="contained" size="large" onClick={orderHandler}>Ordenar</ButtonPrimary>
+                <ButtonPrimary variant="contained" size="large" onClick={modalHandler} type='Danger'>Cancelar</ButtonPrimary>
+            </div>
         </div>
     );
 };

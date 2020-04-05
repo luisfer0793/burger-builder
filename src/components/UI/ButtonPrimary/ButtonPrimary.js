@@ -8,10 +8,15 @@ const ButtonPrimary = withStyles((theme) => ({
         fontWeight: 300,
         fontSize: '1.3rem',
         letterSpacing: '0.05rem',
-        color: "#ffffff",
-        backgroundColor: "rgb(243, 47, 80)",
+        color: "#17A2B8",
+        border: '.1rem solid #17A2B8',
+        backgroundColor: 'transparent',
         '&:hover': {
-            backgroundColor: "rgb(185, 32, 58)"
+            backgroundColor: "#17A2B8",
+            color: '#ffffff'
+        },
+        '&:disabled': {
+            border: 'none'
         }
     }
 }))(Button);

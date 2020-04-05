@@ -18,7 +18,8 @@ class BurgerBuilder extends React.Component {
         ],
         basePrice: 4,
         total: 4,
-        isPurchasable: false
+        isPurchasable: false,
+        isModalOpen: false
     };
 
     addIngredientHandler = type => {
@@ -47,6 +48,18 @@ class BurgerBuilder extends React.Component {
         }));
     };
 
+    modalHandler = event => {
+        this.setState((prevState) => {
+            return {
+                isModalOpen: !prevState.isModalOpen
+            };
+        });
+    };
+
+    orderHandler = event => {
+        alert('Succesfully Ordered');
+    }
+
     render() {
         const disabledTypes = this.state.ingredients.reduce((accumulator, ingredient) => {
             accumulator[ingredient.type] = ingredient.quantity <= 0;
@@ -55,8 +68,15 @@ class BurgerBuilder extends React.Component {
         
         return (
             <React.Fragment>
-                <Modal>
-                    <BurgerSummary ingredients={this.state.ingredients} total={this.state.total}/>
+                <Modal 
+                    open={this.state.isModalOpen} 
+                    modalHandler={this.modalHandler}>
+                    <BurgerSummary 
+                        ingredients={this.state.ingredients} 
+                        total={this.state.total} 
+                        orderHandler={this.orderHandler}
+                        modalHandler={this.modalHandler}
+                    />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} price={this.state.total.toFixed(2)}/>
                 <BuildControls
@@ -65,7 +85,7 @@ class BurgerBuilder extends React.Component {
                     removeIngredientHandler={this.removeIngredientHandler}
                 />
                 <div className={styles.BurgerBuilderButtonContainer}>
-                    <ButtonPrimary variant="contained" size="large" disabled={!this.state.isPurchasable}>Ordena Ahora</ButtonPrimary>
+                    <ButtonPrimary variant="contained" size="large" disabled={!this.state.isPurchasable} onClick={this.modalHandler}>Ordena Ahora</ButtonPrimary>
                 </div>
             </React.Fragment>
         );
